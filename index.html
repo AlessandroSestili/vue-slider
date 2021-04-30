@@ -7,11 +7,32 @@
 
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-    <script src="script.js"></script>
-
+    <script src="https://use.fontawesome.com/faebb6ae54.js"></script>
+    
     <title>Vue-Slider</title>
 </head>
 <body>
     
+    <main id="app">
+
+        <div class="container">
+
+            <div class="left-arrow-container" @click="immagineIndietro()">
+                <i class="fa fa-arrow-circle-left"></i>
+            </div>
+
+            <div class="center-img-container">
+                <img :src="immagini[indiceImmagineAttiva]" alt="">
+            </div>
+
+            <div class="right-arrow-container" @click="immagineAvanti()">
+                <i class="fa fa-arrow-circle-right"></i>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
