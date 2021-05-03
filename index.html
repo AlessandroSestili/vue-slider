@@ -1,38 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vueutiful image slider</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="css/styles.css">
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-    <script src="https://use.fontawesome.com/faebb6ae54.js"></script>
-    
-    <title>Vue-Slider</title>
 </head>
+
 <body>
-    
-    <main id="app">
+    <div class="container" id="app">
+        <h1>My vueutilful slider</h1>
 
-        <div class="container">
 
-            <div class="left-arrow-container" @click="immagineIndietro()">
-                <i class="fa fa-arrow-circle-left"></i>
+        <div class="slider-container" tabindex="-1" @keyup.left="changeImg(-1)" @keyup.right="changeImg(1)"
+            @mouseover="pause()" @mouseout="play()">
+            
+            <!-- Freccia di sinistra -->
+            <div class="slider-arrows-container">
+                <i class="fas fa-chevron-left" @click="changeImg(-1)"></i>
             </div>
 
-            <div class="center-img-container">
-                <img :src="immagini[indiceImmagineAttiva]" alt="">
+            <!-- Container immagini -->
+            <div class="slider-images-container">
+                <img :src="imagesList[activeImg]" class="slider-image">
+
+                <div class="slider-dots-container">
+                    <a href="#" class="dot" :class="{currentImg: activeImg === index }" :data-index="index"
+                        v-for="(img, index) in imagesList" @click.prevent="onDotClick(index)"></a>
+                </div>
             </div>
 
-            <div class="right-arrow-container" @click="immagineAvanti()">
-                <i class="fa fa-arrow-circle-right"></i>
+            <!-- Freccia di destra -->
+            <div class="slider-arrows-container">
+                <i class="fas fa-chevron-right" @click="changeImg(+1)"></i>
             </div>
-
         </div>
 
-    </main>
+    </div>
 
-    <script src="script.js"></script>
+
+    <script src="scripts/app.js"></script>
 </body>
+
 </html>
